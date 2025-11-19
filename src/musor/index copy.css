@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+  button {
+    @apply min-w-[50px] border border-gray-400 shadow p-2 rounded hover:bg-amber-100 hover:cursor-pointer hover:scale-105 duration-300;
+  }
+}
+
+@layer components {
+  .action {
+    @apply bg-gray-300 hover:bg-gray-400 hover:font-semibold;
+  }
+}

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+  button {
+    @apply   border border-gray-400 shadow p-2 rounded hover:bg-amber-100 hover:cursor-pointer hover:scale-105 duration-300;
+  }
+
+  input {
+    @apply border
+  }
+}
+
+@layer components {
+ 
+}
