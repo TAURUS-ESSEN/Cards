@@ -31,18 +31,13 @@ function App() {
   }
 
   useEffect(()=>{
-    if (!game.difficulty) {
-                document.documentElement.style.setProperty(
-    '--bg-image',
-    `url('/${theme}/background.jpg')`)
-    return 
-    }
+    if (!game.difficulty) return;
     const tempArray = [];
-    fetch('https://68f4a5d6b16eb6f468351fd2.mockapi.io/api/ShoppingCartTaurusAusEssen/cats')
+    fetch('https://digimon-api.vercel.app/api/digimon')
     .then(r=>r.json())
       .then(data=>{
-        console.log(data);
-        for (let i = 0; i < game.difficulty; i++) {
+        // console.log(data);
+        for (let i = 89; i < 89 + game.difficulty; i++) {
           const obj = {id: i, name: data[i].name, img: data[i].img, isMatched: false}
           tempArray.push(obj);
           if (game.type === 1) {
@@ -51,10 +46,6 @@ function App() {
           }
         }
         setAllCards(shuffle(tempArray));
-        document.documentElement.style.setProperty(
-          '--bg-image',
-          `url('/${theme}/background2.jpg')`
-        );
       })
   },[game.difficulty])
 
@@ -69,19 +60,17 @@ useEffect(() => {
   );
 }, [theme]);
 
-
 return (
   <>
     <div className="flex flex-col justify-center items-center h-screen border p-2">
-      {game.difficulty &&  <span className='mb-4 font-bold text-3xl text-gray-600'> Turn {game.type === 1 ? turn : uniq}</span> }
       {!game.difficulty && <Menu game={game} setGame={setGame} setTheme={setTheme} theme={theme}/> }
-      {!endGame.result && game.difficulty && game.type === 1 &&  <Pair allCards={allCards} setAllCards={setAllCards} setTurn={setTurn} setEndGame={setEndGame} newGame={newGame} theme={theme} dificulty={game.difficulty}/> }
+      {!endGame.result && game.difficulty && game.type === 1 &&  <Pair allCards={allCards} setAllCards={setAllCards} setTurn={setTurn} setEndGame={setEndGame} newGame={newGame} theme={theme} dificulty={game.dificulty}/> }
       {!endGame.result && game.difficulty && game.type === 2 &&  <UnPair allCards={allCards} shuffle={shuffle} setAllCards={setAllCards} setUniq={setUniq} setEndGame={setEndGame} newGame={newGame} theme={theme}/> }
 
-        
-        {endGame.result && <Result turn={turn} newGame={newGame} endGame={endGame} uniq={uniq}/>}
-      {/* <div>Endgame:{endGame.result.toString()} {endGame.type}</div> */}
-      {/* <div className=''>theme: {theme}</div> */}
+        Turn:{turn} uniq:{uniq}
+        {endGame.result && <Result turn={turn} newGame={newGame}/>}
+      <div>Endgame:{endGame.result.toString()} {endGame.type}</div>
+      <div className=''>theme: {theme}</div>
     </div>
   </>
   )

@@ -2,21 +2,49 @@
 
 @layer base {
   button {
-    @apply   border border-gray-400 shadow p-2 rounded hover:bg-amber-100 hover:cursor-pointer hover:scale-105 duration-300
-    disabled:bg-gray-300 disabled:cursor-none disabled:text-gray-400
+    @apply border border-gray-400 shadow p-2 rounded  hover:cursor-pointer hover:scale-105 duration-300
+      disabled:cursor-default disabled:text-gray-400
   }
 
   input {
     @apply border
   }
-
- 
 }
 
 @layer components {
- 
+  .card {
+    @apply  transition-all duration-500   hover:border-2 hover:scale-105  
+    hover:shadow-amber-500
+  }
 }
 
 @layer utilities {
-   
+.flip-wrapper {
+  @apply relative w-[130px] h-[185px] ;
+  /* perspective: 800px; */
+}
+
+.flip-inner {
+  @apply absolute inset-0 rounded-xl shadow transition-transform duration-700;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* когда карта перевёрнута */
+.flip-inner.flipped {
+  
+  transform: rotateY(180deg);
+}
+
+.flip-front {
+  @apply absolute inset-0 text-white rounded-xl overflow-hidden;
+  backface-visibility: hidden;
+}
+
+/* это «лицо» карты, которое показывается после переворота */
+.flip-back {
+  @apply absolute inset-0 rounded-xl bg-white text-white  flex flex-col gap-4 justify-between;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
 }
