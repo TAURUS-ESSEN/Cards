@@ -42,8 +42,8 @@ export default function Pair({allCards, setAllCards, setTurn, setEndGame, newGam
   return (
     <>
         <div
-  className="grid gap-4"
-  style={{ gridTemplateColumns: `repeat(${cols}, 130px)` }}
+  className="grid gap-4 shadow-field p-4 rounded-xl  bg-white/40"
+  style={{ gridTemplateColumns: `repeat(${cols}, 125px)` }}
 >
         {allCards.map((card)  => {
           const isFlipped =
@@ -70,7 +70,7 @@ export default function Pair({allCards, setAllCards, setTurn, setEndGame, newGam
       })}
       </div>
       {/* {firstCard && firstCard.name } */}
-      <div className='mt-8'><button onClick={newGame}>Restart Game</button></div>
+      <div className='mt-2'><button type='button' onClick={newGame} className=' rounded-lg bg-[#FDF3C6] hover:bg-amber-400'>Restart Game</button></div>
     </>
   )
 }
