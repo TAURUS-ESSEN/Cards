@@ -1,10 +1,10 @@
 # 🐾 Cat Memory Games  
 A small React project with two memory-game modes
 
-<h2 align="center">🎮 Live Demo</h2>
+<h2 align="center">🎮 Live Demo  </h2>
 
 <p align="center">
-  <a href="[https://your-demo-url.com](https://cards-nu-three-13.vercel.app/)">
+  <a href="https://cards-nu-three-13.vercel.app/)">
     <img src="src/assets/preview.webp" width="650" alt="Demo Preview"/>
   </a>
 </p>
