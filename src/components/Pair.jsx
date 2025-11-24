@@ -48,7 +48,7 @@ export default function Pair() {
 
   return (
     <>
-      <div className={`grid gap-4 p-4 shadow-field rounded-xl bg-white/40 transition-all duration-700 ease-out ${startAnim ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}`}
+      <div className={`grid gap-4 p-4 shadow-field rounded-xl bg-white/40 transition-all duration-700 ease-out ${startAnim ? 'opacity-0 translate-y-300' : 'opacity-100 translate-y-0'}`}
         style={{ gridTemplateColumns: `repeat(${cols}, 125px)` }}>
         {allCards.map((card)  => {
           const isFlipped =

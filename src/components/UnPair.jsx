@@ -70,8 +70,8 @@ export default function UnPair() {
           className={`
             grid max-w-fit mx-auto
             transition-all duration-700 ease-out
-            ${startAnim ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}
-            ${isHiding ? 'opacity-0 scale-95' : ''}
+            ${startAnim ? 'opacity-0 translate-y-300' : 'opacity-100 translate-y-0'}
+            ${isHiding ? 'opacity-0 scale-0' : ''}
           `}
           style={{ gridTemplateColumns: `repeat(${cols}, 150px)` }}
         >
