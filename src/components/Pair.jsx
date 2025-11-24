@@ -6,6 +6,11 @@ export default function Pair() {
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const cardsCount = allCards.length;
+  const [startAnim, setStartAnim] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setStartAnim(false), 560);
+    return () => clearTimeout(t);
+  }, []);
 
   const cols =
     cardsCount <= 12 ? 4 :
@@ -43,10 +48,8 @@ export default function Pair() {
 
   return (
     <>
-        <div
-  className="grid gap-4 shadow-field p-4 rounded-xl  bg-white/40"
-  style={{ gridTemplateColumns: `repeat(${cols}, 125px)` }}
->
+      <div className={`grid gap-4 p-4 shadow-field rounded-xl bg-white/40 transition-all duration-700 ease-out ${startAnim ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}`}
+        style={{ gridTemplateColumns: `repeat(${cols}, 125px)` }}>
         {allCards.map((card)  => {
           const isFlipped =
             card.isMatched ||
@@ -63,16 +66,19 @@ export default function Pair() {
               }
               className={`flip-wrapper border-0 transition-all duration-500 ${card.isMatched ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}
             >
-            <div className={`card flip-inner ${isFlipped ? 'flipped' : ''}  `}>
-              <img src={`${theme}/back.webp`} className="flip-front h-full" width="180"/>
-              <img src={`${theme}/${card.img}.webp`} className="flip-back w-full h-full object-cover rounded-xl" />
-            </div>{card.name}
-          </button>
-        );
-      })}
+              <div className={`card flip-inner ${isFlipped ? 'flipped' : ''}  `}>
+                <img src={`${theme}/back.webp`} className="flip-front h-full" width="180"/>
+                <img src={`${theme}/${card.img}.webp`} className="flip-back w-full h-full object-cover rounded-xl" />
+              </div>{card.name}
+            </button>
+          );
+        })}
       </div>
-      {/* {firstCard && firstCard.name } */}
-      <div className='mt-2'><button type='button' onClick={newGame} className=' rounded-lg bg-[#FDF3C6] hover:bg-amber-400'>Restart Game</button></div>
+      <div className='mt-2'>
+        <button type='button' onClick={newGame} className='rounded-lg bg-[#FDF3C6] hover:bg-amber-400'>
+          Restart Game
+        </button>
+      </div>
     </>
   )
 }

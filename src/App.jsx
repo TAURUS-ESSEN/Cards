@@ -20,7 +20,7 @@ function App() {
 
   const STORAGE_KEY = 'catGameRecords';
   const stored = localStorage.getItem(STORAGE_KEY);
-  const records =  stored ? JSON.parse(stored) : defaultRecords;
+  const records = stored ? JSON.parse(stored) : defaultRecords;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(records)); 
 
   const shuffle = useCallback((array) => {
@@ -88,16 +88,16 @@ function App() {
   return (
   <>
     <AppContext.Provider value={contextValue}>
-      <div className="flex flex-col justify-center items-center h-screen border p-2">
+      <div className="flex flex-col justify-center items-center h-screen p-2 border ">
         {!endGame.result && records[game.type]?.[game.difficulty] && 
-        <span className='absolute top-2 max-w-40  right-100 rounded font-bold p-2'>
+        <span className='absolute top-2 max-w-40 right-100 p-2 rounded font-bold'>
           <span>Best Score: {records[game.type]?.[game.difficulty]}</span>  
         </span>}
         
         {game.difficulty &&  
         <span className='mb-1 font-bold text-3xl text-gray-600'> 
           {game.type===1 ? 'Turn' : 'Unique Cards'} 
-          <span className='text-amber-600'>{game.type === 1 ? turn : uniq}</span>
+          <span className='text-amber-600'> {game.type === 1 ? turn : uniq}</span>
         </span> }
         
         {!game.difficulty && <Menu /> }
@@ -108,7 +108,7 @@ function App() {
 
         {endGame.result && <Result />}
 
-        <div className='absolute bottom-1 text-center flex justify-around gap-8'>
+        <div className='absolute bottom-1 flex justify-around gap-8 text-center'>
           <span>© 2025 by <a href="https://reitarov.dev">Reitarov Yevhen</a></span> 
           <span><a href="https://github.com/TAURUS-ESSEN/Cards" target='_blank' className='text-gray-500 hover:font-bold'>[Source Code]</a></span>
         </div>

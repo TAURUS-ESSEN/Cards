@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useAppContext } from './AppContext';
 
-export default function Pair() {
+export default function UnPair() {
   const {allCards, setAllCards, shuffle, setUniq, setEndGame, newGame, theme} = useAppContext();
   const [selectedCards, setSelectedCards] = useState([]);
   const [needShuffle, setNeedShuffle] = useState(false);
   const [isHiding, setIsHiding] = useState(false);
+
+ 
+  const [startAnim, setStartAnim] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setStartAnim(false), 560);
+    return () => clearTimeout(t);
+  }, []);
+ 
 
   const cardsCount = allCards.length;
 
@@ -46,14 +54,14 @@ export default function Pair() {
       setAllCards(prev => shuffle([...prev]));
       setIsHiding(false);
       setNeedShuffle(false);
-    }, 500); 
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [needShuffle, setAllCards, shuffle]);
 
   return (
     <>
-      <p className="mt-4 mb-4 text-gray-700 text-center">
+      <p className="mt-1 mb-1 text-gray-700 text-center">
         Tap a new cat each time. If you pick the same cat twice — game over.
       </p>
 
@@ -61,10 +69,11 @@ export default function Pair() {
         <div
           className={`
             grid max-w-fit mx-auto
-            transition-all duration-500 ease-out
-            ${isHiding ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}
+            transition-all duration-700 ease-out
+            ${startAnim ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'}
+            ${isHiding ? 'opacity-0 scale-95' : ''}
           `}
-          style={{ gridTemplateColumns: `repeat(${cols}, 155px)` }}
+          style={{ gridTemplateColumns: `repeat(${cols}, 150px)` }}
         >
           {allCards.map(card => (
             <button
@@ -83,7 +92,7 @@ export default function Pair() {
         </div>
       )}
 
-      <div className="mt-4 text-center">
+      <div className=" text-center">
         <button
           type="button"
           onClick={newGame}
@@ -96,4 +105,3 @@ export default function Pair() {
     </>
   );
 }
-  
