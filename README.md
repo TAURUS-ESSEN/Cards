@@ -1,16 +1,65 @@
-# React + Vite
+# 🐾 Cat Memory Games  
+A small React project with two memory-game modes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2 align="center">🎮 Live Demo</h2>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="[https://your-demo-url.com](https://cards-nu-three-13.vercel.app/)">
+    <img src="src/assets/preview.webp" width="650" alt="Demo Preview"/>
+  </a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A cat-themed memory game built with **React**, **Context API**, smooth animations, dynamic backgrounds, and a local high-score system.
 
-## React Compiler
+## 🎮 Game Modes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### **1. Match the Cats (Pairs)**
+- All cards start face-down  
+- You flip two cards each turn  
+- Matching pairs stay revealed  
+- Goal: finish the game in as few turns as possible  
 
-## Expanding the ESLint configuration
+### **2. Pick Every Cat (Unique Click)**
+- Each card can be clicked **only once**  
+- Clicking the same card twice = game over  
+- Cards reshuffle after every click  
+- Goal: click all unique cards without repeating  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⭐ Features
+- Two gameplay modes  
+- Four difficulty levels (4 / 6 / 9 / 12 cards)  
+- Best scores saved via `localStorage`  
+- Fade-in, flip and hover animations  
+- Dynamic backgrounds using CSS variables  
+- Centralized state management via **AppContext**  
+- Cat images loaded from external API  
+- Responsive grid layout  
+
+---
+
+## 🛠 Tech Stack
+- **React 18**  
+- **Context API**  
+- **TailwindCSS**  
+- CSS animations  
+- `fetch` for data loading  
+- `localStorage` for saving records  
+
+---
+
+## 📂 Main Components
+- **Menu.jsx** — mode & difficulty selector  
+- **Pair.jsx** — pair-matching gameplay  
+- **UnPair.jsx** — unique-click gameplay  
+- **Result.jsx** — end-screen & high-score logic  
+- **App.jsx** — main logic, context, themes, data loading  
+
+---
+
+## 🚀 Run Locally
+
+```bash
+npm install
+npm run dev
