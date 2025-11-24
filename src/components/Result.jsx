@@ -1,5 +1,7 @@
-export default function Result({ turn, allCards, theme, uniq, game, endGame, newGame, records }) {
+import { useAppContext } from './AppContext';
 
+export default function Result() {
+    const {turn, allCards, theme, uniq, game, endGame, newGame, records} = useAppContext();
     const STORAGE_KEY = 'catGameRecords';
     const score = game.type === 1 ? turn : uniq;
 

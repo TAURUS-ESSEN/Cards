@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useAppContext } from './AppContext';
 
-export default function Pair({allCards, setAllCards, setTurn, setEndGame, newGame, theme}) {
+export default function Pair() {
+  const {allCards, setAllCards, setTurn, setEndGame, newGame, theme} = useAppContext();
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const cardsCount = allCards.length;

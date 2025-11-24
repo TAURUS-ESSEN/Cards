@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useAppContext } from './AppContext';
 
-export default function Pair({
-  allCards,
-  shuffle,
-  setAllCards,
-  setUniq,
-  setEndGame,
-  newGame,
-  theme,
-}) {
+export default function Pair() {
+  const {allCards, setAllCards, shuffle, setUniq, setEndGame, newGame, theme} = useAppContext();
   const [selectedCards, setSelectedCards] = useState([]);
   const [needShuffle, setNeedShuffle] = useState(false);
   const [isHiding, setIsHiding] = useState(false);

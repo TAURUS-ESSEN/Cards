@@ -1,10 +1,12 @@
-export default function Menu({game, setGame, theme, setTheme}) {
-        const canClick = game.type === '' ? true : false 
+import { useAppContext } from './AppContext';
+
+export default function Menu() {
+    const {game, setGame, theme, setTheme} = useAppContext();
+    const canClick = game.type === '' ? true : false 
 
     return (
         <div className="">
             <div className="mb-5 max-w-100 bg-[#FEF6E7] text-gray-600 shadow-field p-4 rounded-xl text-center">
-                 
                     {
                     game.type === '' && <div className="font-bold text-2xl">Cat Memory Games</div>}{
                     game.type === 1 && <div >In this mode, all cards are placed face down. Your goal is to find <strong>matching pairs</strong>.
