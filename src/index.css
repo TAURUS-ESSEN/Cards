@@ -23,6 +23,8 @@ button { font-family: Delius, system-ui, -apple-system, Segoe UI, Roboto, Arial,
 }
 
 @layer components {
+ 
+
   .card {
     @apply relative transition-all duration-500 hover:scale-105 border-0;
     z-index: 0;
@@ -58,6 +60,11 @@ button { font-family: Delius, system-ui, -apple-system, Segoe UI, Roboto, Arial,
 }
 
 @layer utilities {
+
+  .grid-auto-cards {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  }
+
   .shadow-field {
     box-shadow: 0 0 8px rgba(211, 211, 211, 0.612);
   }
